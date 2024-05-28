@@ -1,0 +1,9 @@
+Azure AI: https://language.cognitive.azure.com/tryout/sentiment
+API Documentation: https://pypi.org/project/azure-ai-textanalytics/#analyze-sentiment
+Azure AI Language includes four main functions: sentiment analysis, key phrase extraction, language detection, and named entity recognition.
+
+Capabilities of Microsoft Azure AI Language Studio: 
+1. Language detection - sentiment analysis, opinion mining
+2. Extract named entities
+3. Extract PII 
+4. Extract key phrases 
