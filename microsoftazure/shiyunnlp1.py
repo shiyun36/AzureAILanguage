@@ -6,10 +6,8 @@
 # unset LANGUAGE_ENDPOINT
 
 # azure.ai.textanalytics documentation: https://pypi.org/project/azure-ai-textanalytics/5.1.0/
+# resolved eror by changing python interpretor to anocanda one.
 import os
-import sys
-print(sys.path) 
-
 # Access the environment variables
 language_key = os.getenv('LANGUAGE_KEY')
 language_endpoint = os.getenv('LANGUAGE_ENDPOINT')
@@ -17,6 +15,7 @@ language_endpoint = os.getenv('LANGUAGE_ENDPOINT')
 
 from azure.ai.textanalytics import TextAnalyticsClient
 from azure.core.credentials import AzureKeyCredential
+text_analytics_client = TextAnalyticsClient(language_endpoint, AzureKeyCredential(language_key))
 
 # Authenticate the client using your key and endpoint 
 def authenticate_client():
@@ -75,5 +74,55 @@ def sentiment_analysis_with_opinion_mining_example(client):
                     ))
             print("\n")
         print("\n")
-          
-sentiment_analysis_with_opinion_mining_example(client)
+
+## Result:          
+# sentiment_analysis_with_opinion_mining_example(client)
+
+# Document Sentiment: mixed
+# Overall scores: positive=0.43; neutral=0.04; negative=0.53 
+
+# Sentence: The food and service were unacceptable. 
+# Sentence sentiment: negative
+# Sentence score:
+# Positive=0.00
+# Neutral=0.01
+# Negative=0.99
+
+# ......'negative' target 'food'
+# ......Target score:
+# ......Positive=0.01
+# ......Negative=0.99
+
+# ......'negative' assessment 'unacceptable'
+# ......Assessment score:
+# ......Positive=0.01
+# ......Negative=0.99
+
+# ......'negative' target 'service'
+# ......Target score:
+# ......Positive=0.01
+# ......Negative=0.99
+
+# ......'negative' assessment 'unacceptable'
+# ......Assessment score:
+# ......Positive=0.01
+# ......Negative=0.99
+
+
+
+# Sentence: The concierge was nice, however.
+# Sentence sentiment: positive
+# Sentence score:
+# Positive=0.86
+# Neutral=0.08
+# Negative=0.07
+
+# ......'positive' target 'concierge'
+# ......Target score:
+# ......Positive=1.00
+# ......Negative=0.00
+
+# ......'positive' assessment 'nice'
+# ......Assessment score:
+# ......Positive=1.00
+# ......Negative=0.00
